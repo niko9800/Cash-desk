@@ -1,5 +1,6 @@
 package com.example.cashdesk.service;
 
+import com.example.cashdesk.exception.FileOperationsException;
 import com.example.cashdesk.model.Balance;
 import com.example.cashdesk.model.Transaction;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class FileOperationService {
                 balances.add(balance);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new FileOperationsException(e.getMessage());
 
         }
 
@@ -53,7 +54,7 @@ public class FileOperationService {
                 writer.write(b.toString());
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new FileOperationsException(e.getMessage());
         }
     }
 
@@ -62,7 +63,7 @@ public class FileOperationService {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file.getPath(), true))) {
             writer.write(transaction.toString());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new FileOperationsException(e.getMessage());
         }
     }
 
