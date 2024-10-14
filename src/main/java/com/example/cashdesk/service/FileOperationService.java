@@ -12,7 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,7 +67,7 @@ public class FileOperationService {
     }
 
     private Map<Integer, Integer> toDenominationsMap(String denominationsStr) {
-        Map<Integer, Integer> denominations = new HashMap<>();
+        Map<Integer, Integer> denominations = new LinkedHashMap<>();
         String[] denominationsArr = denominationsStr.split(COMMA);
         Arrays.stream(denominationsArr).forEach(d -> {
             String[] pair = d.split(EMPTY_SPACE);

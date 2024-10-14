@@ -23,6 +23,9 @@ public class CashOperationsRequestDTO implements Serializable {
     @ValidOperationType
     private String operationType;
 
+    /* Banknote denominations are represented as a map. The key is the value of the banknote,
+       while the map value represents the number of banknotes the cashier has.
+     */
     @NotEmpty(message = "Denominations should be specified!")
     private Map<Integer, Integer> denominations;
 }
